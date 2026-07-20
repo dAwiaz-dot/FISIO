@@ -1,7 +1,7 @@
 import { cpSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 rmSync("dist", { recursive: true, force: true });
 mkdirSync("dist", { recursive: true });
-for (const file of ["index.html", "styles.css", "script.js"]) cpSync(file, `dist/${file}`);
+cpSync("index.html", "dist/index.html");
 cpSync("public/images", "dist/images", { recursive: true });
 mkdirSync("dist/server", { recursive: true });
 mkdirSync("dist/.openai", { recursive: true });
