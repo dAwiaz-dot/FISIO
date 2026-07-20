@@ -1,11 +1,8 @@
-import { cpSync, existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
-
-if (!existsSync("out")) {
-  throw new Error("A exportação estática não gerou a pasta out.");
-}
-
+import { cpSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 rmSync("dist", { recursive: true, force: true });
-cpSync("out", "dist", { recursive: true });
+mkdirSync("dist", { recursive: true });
+for (const file of ["index.html", "styles.css", "script.js"]) cpSync(file, `dist/${file}`);
+cpSync("public/images", "dist/images", { recursive: true });
 mkdirSync("dist/server", { recursive: true });
 mkdirSync("dist/.openai", { recursive: true });
 cpSync(".openai/hosting.json", "dist/.openai/hosting.json");

@@ -7,3 +7,4 @@ dist
 .env*
 MazyOS/
 .DS_Store
+.vscode/
